@@ -1,8 +1,9 @@
 #include <iostream>
 #include <string>
 using namespace std;
-struct Equipment
+class Equipment
 {
+public:
     string name;
     int quantity;
     string referenceId;
