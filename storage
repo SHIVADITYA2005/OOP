@@ -1,0 +1,502 @@
+#include <iostream>
+using namespace std;
+
+class Dispenser {
+public:
+    int a,b,c,d,e,f,g,h,j;
+    int search;
+    int initial() {
+        int N;
+        cout << "Select group of objects by number:" << endl;
+        cout << "1. TOOLS" << endl;
+        cout << "2. SPARES" << endl;
+        cout << "3. MEDICINES" << endl;
+        cout << "4. CONSUMEABLES" << endl;
+        cout << "5. MANNUALS" << endl;
+        cin >> N;
+        return N;
+    }
+};
+class TOOLS :public Dispenser {
+public:
+    int n;
+    int tool(){
+        cout<<"Enter the quantity of Mechanical tool"<<endl;
+        cin>>a;
+        cout<<"Enter the quantity of Electrical tool"<<endl;
+        cin>>b;
+        cout<<"Enter the quantity of Diagnostic tool"<<endl;
+        cin>>c;
+        cout<<"Enter the quantity of Robotic tool"<<endl;
+        cin>>d;
+        cout<<"Enter the quantity of Emergency tool"<<endl;
+        cin>>e;
+        cout<<"Enter the quantity of Extravehicular tool"<<endl;
+        cin>>f;
+        cout << "Which tool do you want:" << endl;
+        cout << "11. Mechanical" << endl;
+        cout << "12. Electrical" << endl;
+        cout << "13. Diagnostic Tools" << endl;
+        cout << "14. Robotic Tools" << endl;
+        cout << "15. Emergency Tools" << endl;
+        cout << "16. Extravehicular Activity (EVA) Tools" << endl;
+        cin >> n;
+        cout<<"Enter the quantity of item you want"<<endl;
+        cin>>search;
+        switch(n){
+            case 11:{
+                if(a>=search){
+                a-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+            case 12:{
+                if(b>=search){
+                b-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 13:{
+                if(c>=search){
+                c-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 14:{
+                if(d>=search){
+                d-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 15:{
+                if(e>=search){
+                e-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 16:{
+                if(f>=search){
+                f-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+        }
+        
+    }    
+};
+
+class SPARES :public Dispenser {
+public:
+    int n;
+    int spares() {
+        cout<<"Enter the quantity of Electrical tool"<<endl;
+        cin>>a;
+        cout<<"Enter the quantity of Mechanical tool"<<endl;
+        cin>>b;
+        cout<<"Enter the quantity of Life Support Systems tool"<<endl;
+        cin>>c;
+        cout<<"Enter the quantity of Propulsion Systems"<<endl;
+        cin>>d;
+        cout<<"Enter the quantity of Communication Systems"<<endl;
+        cin>>e;
+        cout<<"Enter the quantity of Thermal Control Systems"<<endl;
+        cin>>f;
+        cout<<"Enter the quantity of Structural Components"<<endl;
+        cin>>g;
+        cout<<"Enter the quantity of Scientific Instruments"<<endl;
+        cin>>h;
+        cout<<"Enter the quantity of Miscellaneous"<<endl;
+        cin>>j;
+        cout << "Which component do you want:" << endl;
+        cout << "21. Electrical parts box" << endl;
+        cout << "22. Mechanical Parts" << endl;
+        cout << "23. Life Support Systems" << endl;
+        cout << "24. Propulsion Systems" << endl;
+        cout << "25. Communication Systems" << endl;
+        cout << "26. Thermal Control Systems" << endl;
+        cout << "27. Structural Components" << endl;
+        cout << "28. Scientific Instruments" << endl;
+        cout << "29. Miscellaneous" << endl;
+        cin >> n;
+         switch(n){
+            case 21:{
+                if(a>=search){
+                a-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+            case 22:{
+                if(b>=search){
+                b-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 23:{
+                if(c>=search){
+                c-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 24:{
+                if(d>=search){
+                d-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 25:{
+                if(e>=search){
+                e-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 26:{
+                if(f>=search){
+                f-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+         case 27:{
+                if(g>=search){
+                g-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+         case 28:{
+                if(h>=search){
+                h-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+         case 29:{
+                if(j>=search){
+                j-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+        }
+        
+    }
+};
+
+class MEDICINES :public Dispenser {
+public:
+    int n;
+    int medicine() {
+        cout<<"Enter the quantity of Adaptation Ailments"<<endl;
+        cin>>a;
+        cout<<"Enter the quantity of Environmental Ailments"<<endl;
+        cin>>b;
+        cout<<"Enter the quantity of Psychological Ailments"<<endl;
+        cin>>c;
+        cout<<"Enter the quantity of Infectious or Minor Injuries"<<endl;
+        cin>>d;
+        cout<<"Enter the quantity of Cardiovascular and Respiratory Issues"<<endl;
+        cin>>e;
+        cout<<"Enter the quantity of Hygiene Requirements"<<endl;
+        cin>>f;
+        cout << "Which ailment's medicine do you want:" << endl;
+        cout << "31. Physical Adaptation Ailments" << endl;
+        cout << "32. Environmental Ailments" << endl;
+        cout << "33. Psychological Ailments" << endl;
+        cout << "34. Infectious or Minor Injuries" << endl;
+        cout << "35. Cardiovascular and Respiratory Issues" << endl;
+        cout << "36. Hygiene Requirements" << endl;
+        cin >> n;
+        cin>>search;
+        switch(n){
+            case 31:{
+                if(a>=search){
+                a-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+            case 32:{
+                if(b>=search){
+                b-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 33:{
+                if(c>=search){
+                c-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 34:{
+                if(d>=search){
+                d-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 35:{
+                if(e>=search){
+                e-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 36:{
+                if(f>=search){
+                f-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+        }
+        
+        
+    }
+};
+
+class CONSUMEABLES :public Dispenser {
+public:
+    int n;
+    int consumeables(){
+         cout<<"Enter the quantity of Food"<<endl;
+        cin>>a;
+        cout<<"Enter the quantity of Drinks"<<endl;
+        cin>>b;
+        cout<<"Enter the quantity of Supplements"<<endl;
+        cin>>c;
+        cout<<"Enter the quantity of Emergency Rations"<<endl;
+        cin>>d;
+        cout << "What do you want for consuming:" << endl;
+        cout << "41. Food" << endl;
+        cout << "42. Drinks" << endl;
+        cout << "43. Supplements" << endl;
+        cout << "44. Emergency Rations" << endl;
+        cin >> n;
+          cin>>search;
+        switch(n){
+            case 41:{
+                if(a>=search){
+                a-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+            case 42:{
+                if(b>=search){
+                b-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 43:{
+                if(c>=search){
+                c-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 44:{
+                if(d>=search){
+                d-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+        }
+    }
+};
+
+class MANNUALS :public Dispenser {
+public:
+    int n;
+    int mannuals() {
+          cout<<"Enter the quantity of Operational Manuals"<<endl;
+        cin>>a;
+        cout<<"Enter the quantity of Maintenance Manuals"<<endl;
+        cin>>b;
+        cout<<"Enter the quantity of Emergency Manuals"<<endl;
+        cin>>c;
+        cout<<"Enter the quantity of Scientific Experiment Manuals"<<endl;
+        cin>>d;
+        cout<<"Enter the quantity of Extravehicular Activity (EVA) Manuals"<<endl;
+        cin>>e;
+        cout<<"Enter the quantity of Training and Reference Materials"<<endl;
+        cin>>f;
+        cout << "Which manuals do you want:" << endl;
+        cout << "51. Operational Manuals" << endl;
+        cout << "52. Maintenance Manuals" << endl;
+        cout << "53. Emergency Manuals" << endl;
+        cout << "54. Scientific Experiment Manuals" << endl;
+        cout << "55. Extravehicular Activity (EVA) Manuals" << endl;
+        cout << "56. Training and Reference Materials" << endl;
+        cin >> n;
+         cin>>search;
+        switch(n){
+            case 51:{
+                if(a>=search){
+                a-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+            case 52:{
+                if(b>=search){
+                b-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 53:{
+                if(c>=search){
+                c-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 54:{
+                if(d>=search){
+                d-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 55:{
+                if(e>=search){
+                e-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+              case 56:{
+                if(f>=search){
+                f-=search;
+                return n;
+                }
+        else
+        cout<<"The quantity is Insufficient"<<endl;
+        break;
+        }
+        }
+        
+    }
+};
+
+int main() {
+    Dispenser disp;
+    int choice = disp.initial();
+    switch(choice) {
+        case 1: {
+            TOOLS toolMenu;
+            int toolChoice = toolMenu.tool();
+            cout << "You selected tool option: " << toolChoice << endl;
+            cout << "Your item will be dispensed out shortly"<<endl;
+            break;
+        }
+        case 2: {
+            SPARES spareMenu;
+            int spareChoice = spareMenu.spares();
+            cout << "You selected spares option: " << spareChoice << endl;
+            cout << "Your item will be dispensed out shortly"<<endl;
+            break;
+        }
+        case 3: {
+            MEDICINES medMenu;
+            int medChoice = medMenu.medicine();
+            cout << "You selected medicines option: " << medChoice << endl;
+            cout << "Your item will be dispensed out shortly"<<endl;
+            break;
+        }
+        case 4: {
+            CONSUMEABLES consMenu;
+            int consChoice = consMenu.consumeables();
+            cout << "You selected consumeables option: " << consChoice << endl;
+            cout << "Your item will be dispensed out shortly"<<endl;
+            break;
+        }
+        case 5: {
+            MANNUALS manualMenu;
+            int manualChoice = manualMenu.mannuals();
+            cout << "You selected manuals option: " << manualChoice << endl;
+            cout << "Your item will be dispensed out shortly"<<endl;
+            break;
+        }
+        default:
+            cout << "Invalid choice. Please run the program again and select a valid option." << endl;
+            break;
+    }
+    
+    return 0;
+}
