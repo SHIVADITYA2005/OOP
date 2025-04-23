@@ -1,158 +1,95 @@
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
+// Represents an item in the space vending feeder/dispenser
+struct Item {
+    string name;
+    int quantity;
+    int ampleThreshold;
+};
+
 class Dispenser {
-public:
-    string object_name;
-    int input;
-    
-    int initial() {
-        int N;
-        cout << "Select group of objects by number:" << endl;
-        cout << "1. TOOLS" << endl;
-        cout << "2. SPARES" << endl;
-        cout << "3. MEDICINES" << endl;
-        cout << "4. CONSUMEABLES" << endl;
-        cout << "5. MANNUALS" << endl;
-        cin >> N;
-        return N;
-    }
-    
-    int dispense() {
-        cout << "Enter the name of the required object:" << endl;
-        cin >> object_name;
-        cout << "Enter the number of objects required:" << endl;
-        cin >> input;
-        return input;
-    }
-};
+    vector<vector<Item>> categories;
+    vector<string> categoryNames;
 
-class TOOLS {
 public:
-    int n;
-    int tool() {
-        cout << "Which tool do you want:" << endl;
-        cout << "11. Mechanical" << endl;
-        cout << "12. Electrical" << endl;
-        cout << "13. Diagnostic Tools" << endl;
-        cout << "14. Robotic Tools" << endl;
-        cout << "15. Emergency Tools" << endl;
-        cout << "16. Extravehicular Activity (EVA) Tools" << endl;
-        cin >> n;
-        return n;
-    }
-};
+    Dispenser() {
+        categoryNames = {"TOOLS","SPARES","MEDICINES","CONSUMABLES","MANUALS"};
+        categories.resize(categoryNames.size());
 
-class SPARES {
-public:
-    int n;
-    int spares() {
-        cout << "Which component do you want:" << endl;
-        cout << "21. Electrical parts" << endl;
-        cout << "22. Mechanical Parts" << endl;
-        cout << "23. Life Support Systems" << endl;
-        cout << "24. Propulsion Systems" << endl;
-        cout << "25. Communication Systems" << endl;
-        cout << "26. Thermal Control Systems" << endl;
-        cout << "27. Structural Components" << endl;
-        cout << "28. Scientific Instruments" << endl;
-        cout << "29. Miscellaneous" << endl;
-        cin >> n;
-        return n;
+        // Initialize categories
+        categories[0] = { {"Mechanical Tool",10,5}, {"Electrical Tool",8,4}, {"Diagnostic Tool",5,3}, {"Robotic Tool",2,1}, {"Emergency Tool",3,2}, {"EVA Tool",4,2} };
+        categories[1] = { {"Electrical Part",20,10}, {"Mechanical Part",15,8}, {"Life Support System",5,2}, {"Propulsion System",3,1}, {"Communication System",4,2}, {"Thermal Control System",3,1}, {"Structural Component",6,3}, {"Scientific Instrument",2,1}, {"Miscellaneous",10,5} };
+        categories[2] = { {"Adaptation Med",10,5}, {"Environmental Med",8,4}, {"Psychological Med",6,3}, {"Injury Med",7,3}, {"Cardio/Resp Med",5,2}, {"Hygiene Supply",12,6} };
+        categories[3] = { {"Food Pack",30,15}, {"Drink Pack",25,12}, {"Supplement",20,10}, {"Emergency Ration",10,5} };
+        categories[4] = { {"Operational Manual",5,2}, {"Maintenance Manual",4,2}, {"Emergency Manual",3,1}, {"Experiment Manual",6,3}, {"EVA Manual",4,2}, {"Training Material",10,5} };
     }
-};
 
-class MEDICINES {
-public:
-    int n;
-    int medicine() {
-        cout << "Which ailment's medicine do you want:" << endl;
-        cout << "31. Physical Adaptation Ailments" << endl;
-        cout << "32. Environmental Ailments" << endl;
-        cout << "33. Psychological Ailments" << endl;
-        cout << "34. Infectious or Minor Injuries" << endl;
-        cout << "35. Cardiovascular and Respiratory Issues" << endl;
-        cout << "36. Hygiene Requirements" << endl;
-        cin >> n;
-        return n;
+    // Show main category menu
+    void showCategories() const {
+        cout << "Select a category by number:" << endl;
+        for (int i = 0; i < categoryNames.size(); ++i) {
+            cout << i+1 << ". " << categoryNames[i] << endl;
+        }
     }
-};
 
-class CONSUMEABLES {
-public:
-    int n;
-    int consumeables() {
-        cout << "What do you want for consuming:" << endl;
-        cout << "41. Food" << endl;
-        cout << "42. Drinks" << endl;
-        cout << "43. Supplements" << endl;
-        cout << "44. Emergency Rations" << endl;
-        cin >> n;
-        return n;
+    // Show items in chosen category
+    void showItems(int cat) const {
+        cout << "-- " << categoryNames[cat] << " --" << endl;
+        for (int i = 0; i < categories[cat].size(); ++i) {
+            const Item& it = categories[cat][i];
+            cout << i+1 << ". " << it.name << " (Qty: " << it.quantity;
+            if (it.quantity >= it.ampleThreshold)
+                cout << " [Ample]";
+            cout << ")" << endl;
+        }
     }
-};
 
-class MANNUALS {
-public:
-    int n;
-    int mannuals() {
-        cout << "Which manuals do you want:" << endl;
-        cout << "51. Operational Manuals" << endl;
-        cout << "52. Maintenance Manuals" << endl;
-        cout << "53. Emergency Manuals" << endl;
-        cout << "54. Scientific Experiment Manuals" << endl;
-        cout << "55. Extravehicular Activity (EVA) Manuals" << endl;
-        cout << "56. Training and Reference Materials" << endl;
-        cin >> n;
-        return n;
+    // Dispense selected item
+    void dispenseItem(int cat, int idx, int amt) {
+        if (idx < 0 || idx >= categories[cat].size()) {
+            cout << "Invalid item selection." << endl;
+            return;
+        }
+        Item& it = categories[cat][idx];
+        if (it.quantity >= amt) {
+            it.quantity -= amt;
+            cout << "Dispensed " << amt << " x " << it.name << ". Remaining: " << it.quantity << endl;
+            if (it.quantity < it.ampleThreshold) {
+                cout << "Alert: " << it.name << " stock is low!" << endl;
+            }
+        } else {
+            cout << "Error: Only " << it.quantity << " available." << endl;
+        }
     }
 };
 
 int main() {
     Dispenser disp;
-    int choice = disp.initial();
-    
-    switch(choice) {
-        case 1: {
-            TOOLS toolMenu;
-            int toolChoice = toolMenu.tool();
-            cout << "You selected tool option: " << toolChoice << endl;
-            cout << "Your item will be dispensed out shortly"<<endl;
-            break;
-        }
-        case 2: {
-            SPARES spareMenu;
-            int spareChoice = spareMenu.spares();
-            cout << "You selected spares option: " << spareChoice << endl;
-            cout << "Your item will be dispensed out shortly"<<endl;
-            break;
-        }
-        case 3: {
-            MEDICINES medMenu;
-            int medChoice = medMenu.medicine();
-            cout << "You selected medicines option: " << medChoice << endl;
-            cout << "Your item will be dispensed out shortly"<<endl;
-            break;
-        }
-        case 4: {
-            CONSUMEABLES consMenu;
-            int consChoice = consMenu.consumeables();
-            cout << "You selected consumeables option: " << consChoice << endl;
-            cout << "Your item will be dispensed out shortly"<<endl;
-            break;
-        }
-        case 5: {
-            MANNUALS manualMenu;
-            int manualChoice = manualMenu.mannuals();
-            cout << "You selected manuals option: " << manualChoice << endl;
-            cout << "Your item will be dispensed out shortly"<<endl;
-            break;
-        }
-        default:
-            cout << "Invalid choice. Please run the program again and select a valid option." << endl;
-            break;
+    cout << "=== ISRO Space Vending Feeder & Dispenser ===" << endl;
+
+    disp.showCategories();
+    int categoryChoice;
+    cin >> categoryChoice;
+    if (categoryChoice < 1 || categoryChoice > disp.categoryNames.size()) {
+        cout << "Invalid category. Exiting." << endl;
+        return 0;
     }
-    
+
+    int catIndex = categoryChoice - 1;
+    disp.showItems(catIndex);
+
+    cout << "Enter item number to dispense: ";
+    int itemChoice;
+    cin >> itemChoice;
+
+    cout << "Enter quantity to dispense: ";
+    int quantity;
+    cin >> quantity;
+
+    disp.dispenseItem(catIndex, itemChoice - 1, quantity);
+    cout << "Shutdown complete. Have a safe mission!" << endl;
     return 0;
 }
