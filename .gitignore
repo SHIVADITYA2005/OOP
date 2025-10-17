@@ -1,0 +1,16 @@
+# Ignore everything
+*
+
+# But not this file
+!FinalProject.cpp
+
+# And not this file (optional — for license)
+!LICENSE
+
+# And not the .gitignore itself
+!.gitignore
+
+git rm -r --cached .
+git add .
+git commit -m "Keep only FinalProject.cpp and LICENSE visible"
+git push
