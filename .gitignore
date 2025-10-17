@@ -10,7 +10,4 @@
 # And not the .gitignore itself
 !.gitignore
 
-git rm -r --cached .
-git add .
-git commit -m "Keep only FinalProject.cpp and LICENSE visible"
-git push
+
