@@ -126,7 +126,4 @@ Quantity updates in EEPROM or cloud storage
 
 🔹 Add security layers for controlled item access
 
-👩‍🚀 Author
 
-Shivaditya
-B.Tech CSE, specializing in Embedded Systems & Machine Learning Integration
